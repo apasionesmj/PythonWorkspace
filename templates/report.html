@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Job Search</title>
+        <style>
+            section {
+                display:grid;
+                gap:20px;
+                grid-template-columns: repeat(4,1fr);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Search Results</h1>
+        <!--html에서 파이썬의 변수는 중괄호 두개 안에 입력해서 받기-->
+        <h3>Found {{resultsNumber}} results for : {{searchingBy}}</h3>
+        <a href="/export?word={{searchingBy}}">Export to CSV</a>
+        <section>
+            <h4>Title</h4>
+            <h4>Company</h4>
+            <h4>Location</h4>
+            <h4>Link</h4>
+            <!--html에서 파이썬의 코드는 중괄호퍼센테이지퍼센테이지중괄호 안에 입력해서 받기-->
+            {% for home in jobs %}
+                <span>{{home.title}}</span>
+                <span>{{home.company}}</span>
+                <span>{{home.location}}</span>
+                <a href="{{home.apply_link}}" target="_blank">Apply</a>
+            {% endfor %}
+        </section>
+    </body>
+</html>
