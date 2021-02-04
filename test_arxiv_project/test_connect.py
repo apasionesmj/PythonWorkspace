@@ -7,7 +7,7 @@ class ConnectTest(unittest.TestCase):
     # ==========arxiv에서 파이썬으로 검색한 페이지 접속이 가능한가==========
     def test_connect(self):
         arxiv = requests.get("https://arxiv.org/search/?query=python&searchtype=title&size=100")
-        soup = BeautifulSoup(arxiv.text,'html.parser')
+        #soup = BeautifulSoup(arxiv.text,'html.parser')
         assert arxiv.status_code == 200
     
     # ==========파라미터를 가지고 arxiv에 접속이 가능한가==========
