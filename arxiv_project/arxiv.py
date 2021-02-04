@@ -23,41 +23,28 @@ def extract_scholar(last_page):
     soup = BeautifulSoup(result.text,"html.parser")
     results = soup.find_all("li",{"class":"arxiv-result"})
     for result in results:
+        # 제목
         title = result.find("p",{"class":"title"}).text.strip()
+        # 저자들
         authors = result.find_all("p",{"class":"authors"})
         authors_str = ""
         for result1 in authors:
             result2 = result1.find_all("a")
             for author in result2:
                 authors_str += author.text + ', '
+        # 요약내용
         abstract = result.find("p",{"class":"abstract"})
-        # more를 누르면 abstract-short의 display가 활성화
-        # less를 누르면 abstract-full의 display가 활성화 
+        # more를 누르면 abstract-short가 less를 누르면 abstract-full가 활성화 
+        # abstract-full이 None일때, <p>abstract를 그대로 string.
         abstract_span = abstract.find("span",{"class":"abstract-full"})
         if abstract_span is not None:
             abstract = (str(abstract_span.text.strip()))
         else:
             abstract = (str(abstract.string))
-        print("[Title] : " + title + "   [Authors] : " + authors_str + "    [Abstract] : " + abstract.text)
+        # 날짜
+        # 인용처
+        # PDF
+        print("[Title] : " + title)
+        print("[Authors] : " + authors_str)
+        print("[Abstract] : " + abstract)
     return scholar
-
-
-        # for result1 in authors:
-        #     result2 = result1.find_all("a")
-        #     for author in result2:
-        #         print("[title] : " +title+ "   [authors] : " +author.text)
-
-    # for result1 in results:
-    #     authors = result1.find_all("p",{"class":"authors"})
-    #     for result2 in authors:
-    #         author = result2.find_all("a")
-    #         for realauthor in author:
-    #             print(realauthor.text)
-
-
-# val authors_str = ""
-# for result1 in authors:
-#             result2 = result1.find_all("a")
-#             for author in result2:
-#       authors_str += author.text
-# print("논문명 : " + title + "저자들 : " + author_str)
