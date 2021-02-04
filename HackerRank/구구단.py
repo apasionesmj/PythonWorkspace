@@ -23,12 +23,12 @@
 #             print(z, "*", i, "=", z*i , end="\t")
 #         print()
 
-z = input()
+# z = input()
 
-for x in range(1,10):
-    for y in range(int(z)):
-        print(y+2, "*", x, "=", (y+2)*x, end="\t")
-    print()
+# for x in range(1,10):
+#     for y in range(int(z)):
+#         print(y+2, "*", x, "=", (y+2)*x, end="\t")
+#     print()
 
 
 # z = input()
@@ -39,3 +39,12 @@ for x in range(1,10):
 #             print(y+1, "*", x, "=", (y+1)*x, end="\t")
 #         print()
 #     v += int(z)
+
+z = input()
+v = 1
+while (9 >= v):
+    for x in range(2,10):
+        for y in range(int(z)):
+            print(y+v, "*", x, "=", (y+v)*x, end="\t")
+        print()
+    v += int(z)
